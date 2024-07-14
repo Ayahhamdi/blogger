@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+<div class="m-5">
+    <form method="POST" <%if (locals.ePost) { %> action="/editpost/<%= ePost.id %>/submit" <% } else { %>
+        action="/newpost/submit" <% } %> >
+        <div class="mb-3">
+          <label for="blogTitle" class="form-label">Blog Title</label>
+          <input type="text" name="bTitle" class="form-control" id="blogTitle" <% if(locals.ePost){ %>
+            placeholder=<%= ePost.title%> <% } %>>
+        </div>
+        <div class="mb-3">
+          <label for="blogContent" class="form-label">Blog</label>
+          <input type="text" name="bContent" class="form-control" id="blogContent" <% if(locals.ePost){ %>
+            placeholder=<%= ePost.content%> <% } %>>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </form>
+</div>
+
+
+<%- include("partials/footer.ejs") %> 
