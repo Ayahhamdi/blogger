@@ -24,7 +24,6 @@ app.get("/newpost", (req, res) => {
 });
 
 app.post("/newpost/submit", (req, res) => {
-    console.log("/newpost/submit");
     var title = req.body.bTitle;
     var content = req.body.bContent;
     post = {
@@ -32,26 +31,20 @@ app.post("/newpost/submit", (req, res) => {
         title: title,
         content, content
     }
-    console.log(post.title + " " + post.content);
     posts.push(post);
     res.redirect("/posts");
 })
 
 app.get("/editpost/:id", (req, res) => {
-    console.log(req.params.id)
     res.render("newpost.ejs", {
         ePost :  post
     });
 });
 
 app.post("/editpost/:id/submit", (req, res) => {
-    console.log("/editpost/"+req.params.id+"/submit");
     var title = req.body.bTitle;
     var content = req.body.bContent;
     posts = posts.filter((post) => post.id != req.params.id);
-    posts.forEach(x => {
-        console.log("currentPOst: "+ x.title + " " + x.id + " ");
-    })
     post = {
         id: req.params.id,
         title, content
